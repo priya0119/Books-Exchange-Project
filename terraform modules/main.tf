@@ -32,7 +32,17 @@ module "jenkins"{
   source = "./modules/jenkins"
   ami_id = var.ami_id
   instance_type = var.instance_type
+  vpc_id = module.networking.vpc_id
   key_name = var.key_name
+  public_subnet_ids = module.networking.public_subnet_ids
+}
+module "sonar"{
+  source = "./modules/sonarqube"
+  ami_id = var.ami_id
+  instance_type = var.instance_type
+  vpc_id = module.networking.vpc_id
+  key_name = var.key_name
+  public_subnet_ids = module.networking.public_subnet_ids
 }
 module "ecr" {
   source = "./modules/ecr"

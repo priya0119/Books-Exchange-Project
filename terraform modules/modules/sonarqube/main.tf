@@ -1,6 +1,6 @@
-resource "aws_security_group" "jenkins_sg" {
-  name        = "jenkins-sg"
-  description = "Allow SSH and Jenkins UI"
+resource "aws_security_group" "sonar_sg" {
+  name        = "sonar-sg"
+  description = "Allow SSH and sonar UI"
   vpc_id      = var.vpc_id
  
   ingress {
@@ -25,15 +25,15 @@ resource "aws_security_group" "jenkins_sg" {
   }
 }
 
-resource "aws_instance" "jenkins" {
+resource "aws_instance" "sonar" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
   key_name                    = var.key_name
   subnet_id = var.public_subnet_ids[0]
   associate_public_ip_address = true
-  security_groups  = [aws_security_group.jenkins_sg.id] 
+  security_groups             = [aws_security_group.sonar_sg.id]
   tags = {
-    Name = "Jenkins-Server"
+    Name = "Sonar-Server"
   }
 }
  
