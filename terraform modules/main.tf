@@ -11,3 +11,19 @@ module "networking" {
   enable_public_ip    = var.enable_public_ip
 }
 
+module "ekc" {
+  source = "./modules/eks"
+  cluster_name = var.cluster_name
+  node_desired_size = var.node_desired_size
+  public_subnet_ids = module.networking.public_subnet_ids
+  node_min_size = var.node_min_size
+  node_max_size = var.node_max_size
+  instance_type = var.instance_type
+}
+module "bastionhost" {
+  source = "./modules/bastionhost"
+  vpc_id = module.networking.vpc_id
+  instance_type = var.instance_type
+  public_subnet_ids = module.networking.public_subnet_ids
+  key_name = var.key_name
+}

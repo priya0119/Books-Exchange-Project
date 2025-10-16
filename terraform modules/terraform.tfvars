@@ -1,6 +1,12 @@
-region           = "sa-east-1"
-azs              = ["sa-east-1a", "sa-east-1b"]
+region           = "il-central-1"
+azs              = ["il-central-1a", "il-central-1b"]
 vpc_cidr         = "10.0.0.0/16"
 name_prefix      = "books-dev"
 enable_dns       = true
 enable_public_ip = true
+cluster_name = "Book-app-cluster"
+node_desired_size = 3
+node_min_size = 3
+node_max_size = 5
+instance_type = "t3.medium"
+key_name = "Nivas-Ansible-Key"
