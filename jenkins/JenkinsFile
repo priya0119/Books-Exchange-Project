@@ -59,7 +59,7 @@ pipeline {
             steps{
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_Credentials']]) {
                     script {
-                        sh "aws eks --region il-central-1 update-kubeconfig --name Book-app-cluster"
+                        sh "aws eks update-kubeconfig --name Book-app-cluster --region il-central-1"
                         sh "kubectl apply -f dep.yml "
                     }
                 }
