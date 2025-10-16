@@ -10,3 +10,4 @@ variable "node_min_size" {}
 variable "node_max_size" {}
 variable "instance_type" {}
 variable "key_name" {}
+variable "ami_id" {}

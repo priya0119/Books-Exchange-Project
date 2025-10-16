@@ -24,6 +24,16 @@ module "bastionhost" {
   source = "./modules/bastionhost"
   vpc_id = module.networking.vpc_id
   instance_type = var.instance_type
+  ami_id = var.ami_id
   public_subnet_ids = module.networking.public_subnet_ids
   key_name = var.key_name
+}
+module "jenkins"{
+  source = "./modules/jenkins"
+  ami_id = var.ami_id
+  instance_type = var.instance_type
+  key_name = var.key_name
+}
+module "ecr" {
+  source = "./modules/ecr"
 }

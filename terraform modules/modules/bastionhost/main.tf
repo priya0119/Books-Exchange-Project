@@ -21,7 +21,7 @@ resource "aws_security_group" "bastion_sg" {
 }
 
 resource "aws_instance" "bastion" {
-  ami                         = "ami-07f66a320b0797fd9" 
+  ami                         = var.ami_id
   instance_type               = var.instance_type
   subnet_id                   = var.public_subnet_ids[0]
   key_name                    = var.key_name

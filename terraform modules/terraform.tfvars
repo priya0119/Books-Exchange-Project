@@ -10,3 +10,4 @@ node_min_size = 3
 node_max_size = 5
 instance_type = "t3.medium"
 key_name = "Nivas-Ansible-Key"
+ami_id = "ami-07f66a320b0797fd9"
