@@ -6,12 +6,12 @@ pipeline {
     environment {
         DOCKER_IMAGE = "book-app:${params.IMAGE_TAG}"
         DOCKER_REPO = "nivas1907/capstone"
-        ECR_REPO = "636768524979.dkr.ecr.il-central-1.amazonaws.com/nivas-capgemini"
+        ECR_REPO = "636768524979.dkr.ecr.il-central-1.amazonaws.com/capstone"
     }
     stages {
         stage('checkout code'){
             steps {
-                git branch: 'master', url: 'https://github.com/nivas1907/Books-Exchange-Project.git'
+                git branch: 'master', url: 'https://github.com/priya0119/Books-Exchange-Project.git'
             }
         }
         stage('Build docker image'){
@@ -59,7 +59,7 @@ pipeline {
             steps{
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_Credentials']]) {
                     script {
-                        sh "aws eks update-kubeconfig --name murali-test-cluster --region il-central-1"
+                        sh "aws eks update-kubeconfig --name Book-app-cluster --region il-central-1"
                         sh "kubectl apply -f dep.yml "
                     }
                 }
